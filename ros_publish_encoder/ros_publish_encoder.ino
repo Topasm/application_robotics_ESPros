@@ -1,4 +1,4 @@
-#include <WiFi.h>
+#include <ESP8266WiFi.h> 
 #include <ros.h>
 #include <std_msgs/String.h>
 #include <std_msgs/Int16.h>
@@ -8,7 +8,7 @@
 
 #define LED 2
 
-int incoming_data = 0;
+int incoming_data= 0;
 
 
 //////////////////////
@@ -99,8 +99,8 @@ void loop() {
   if(millis() >publishing_timer)
   {
     incoming_data =  Serial.read();
-    Serial.print("recieved date:");
-    Serial.println(incoming_data, DEC);
+ 
+    Serial.printf("recieved date:%d", incoming_data);
     encoder_msg.data = incoming_data;
     pub_encoder.publish(&encoder_msg);
 
